@@ -1,3 +1,5 @@
+package Players;
+
 public class PlayerFactory {
 
     public Player makePlayer(String name, char type){

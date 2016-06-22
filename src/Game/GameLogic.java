@@ -1,7 +1,9 @@
-public class Game {
+package Game;
 
-    Board board;
-    Player playerX, playerO;
+public class GameLogic {
+
+    public static Board board;
+    public static Players.Player playerX, playerO;
 
 
     public void runGame() {
@@ -13,26 +15,19 @@ public class Game {
         }
         WorkWithBoard workWithBoard = new WorkWithBoard(board);
 
-        Communicator.gameStarted();
-
-        Communicator.printBoard(workWithBoard);
-
-
         while (!workWithBoard.isGameFinished()) {
 
             workWithBoard.changeCurrentPlayer();
 
-            workWithBoard.makeMove();
+           // workWithBoard.makeMove();
 
-            Communicator.printBoard(workWithBoard);
+           // Communicator.printBoard(workWithBoard);
         }
         workWithBoard.getWinner();
     }
 
-    public void setThePlayers() {
-        PlayerFactory factory = new PlayerFactory();
-        playerX = factory.makePlayer(Communicator.enterFirstPlayer(), 'X');
-        playerO = factory.makePlayer(Communicator.enterSecondPlayer(), 'O');
+    public static void setThePlayers() {
+
     }
 
     private void newGame() {

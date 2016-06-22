@@ -1,3 +1,5 @@
+package Players;
+
 import java.util.Random;
 
 public class AI extends Player {

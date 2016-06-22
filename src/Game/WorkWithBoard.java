@@ -1,24 +1,19 @@
-public class WorkWithBoard {
+package Game;
 
-    Board board;
-    int x,y;
+public  class WorkWithBoard {
 
-    WorkWithBoard(Board board) {
+    static Board board;
+    static int x,y;
+
+    public WorkWithBoard(Board board) {
         this.board = board;
     }
 
-    public  void makeMove() {
-
-        while (!isMoveValid(board.currentPlayer.makeMove())) {
-
-            if (!(board.currentPlayer.getNickName()).equals("PC")) {
-                System.out.println("Input was incorrect. Repeat your move.");
-            }
-
-        }
+    public static char makeMove(String str) {
 
         board.board[x][y] = board.currentPlayer.getType();
         board.countMove++;
+        return board.currentPlayer.getType();
     }
 
     public void changeCurrentPlayer() {
@@ -29,36 +24,12 @@ public class WorkWithBoard {
         }
     }
 
-    private boolean isMoveValid(String move) {
 
-        if (move.length() != 2) {
-            return false;
-        }
-
-        try {
-            x = Character.getNumericValue(move.charAt(0)) - 1;
-            y = Character.getNumericValue(move.charAt(1)) - 1;
-        } catch (Exception e) {
-            return false;
-        }
-
-        if (x > 2 || y > 2 || x < 0 || y < 0) {
-            return false;
-        }
-
-        if (board.board[x][y] != ' ') {
-            return false;
-        }
-
-        return true;
-    }
-
-
-    public boolean isGameFinished() {
+    public static boolean isGameFinished() {
         return (isGameHasWinner() || isBoardFull());
     }
 
-    private boolean isGameHasWinner() {
+    private static boolean isGameHasWinner() {
 
         if (board.countMove < 5) {
             return false;
@@ -80,7 +51,7 @@ public class WorkWithBoard {
         return false;
     }
 
-    private boolean isBoardFull() {
+    private static boolean isBoardFull() {
         if (board.countMove == 9) {
             return true;
         } else {
@@ -88,7 +59,7 @@ public class WorkWithBoard {
         }
     }
 
-    private boolean checkHorizontalLine(int i) {
+    private static boolean checkHorizontalLine(int i) {
         if (board.board[i][0] != ' ' && board.board[i][0] == board.board[i][1]
                 && board.board[i][0] == board.board[i][2]) {
             return true;
@@ -96,7 +67,7 @@ public class WorkWithBoard {
         return false;
     }
 
-    private boolean checkVerticalLine(int i) {
+    private static boolean checkVerticalLine(int i) {
         if (board.board[0][i] != ' ' && board.board[0][i] == board.board[1][i]
                 && board.board[0][i] == board.board[2][i]) {
             return true;
@@ -104,7 +75,7 @@ public class WorkWithBoard {
         return false;
     }
 
-    private boolean checkDiagonalLine() {
+    private static boolean checkDiagonalLine() {
         if (board.board[0][0] != ' ' && board.board[0][0] == board.board[1][1]
                 && board.board[0][0] == board.board[2][2]) {
             return true;
@@ -130,31 +101,5 @@ public class WorkWithBoard {
         }
     }
 
-    public String toString() {
 
-        String str = "";
-
-        for (int i = 0; i < 3; i++) {
-
-            if (i == 0) {
-                str = str + "   | 1 | 2 | 3\n";
-            }
-
-            str = str + "--- --- --- ---\n";
-
-            for (int j = 0; j < 3; j++) {
-
-                if (j == 0) {
-                    str = str + " " + (i + 1) + " | " + board.board[i][j] + " ";
-                } else {
-                    str = str + "| " + board.board[i][j] + " ";
-                }
-
-                if (j == 2) {
-                    str = str + "\n";
-                }
-            }
-        }
-        return str = str + "\n";
-    }
 }

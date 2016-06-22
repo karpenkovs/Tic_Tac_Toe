@@ -1,3 +1,6 @@
+import Game.Board;
+import Players.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +28,7 @@ public class History {
 
         for (Board board : games) {
 
-            WorkWithBoard wwb = new WorkWithBoard(board);
+            Game.WorkWithBoard wwb = new Game.WorkWithBoard(board);
 
             String winner = "The winner is: ";
 
@@ -38,8 +41,8 @@ public class History {
             }
 
             history += board.date + ":\n" +
-                    "Player X: " + (board.playerX.getNickName()) + "\n" +
-                    "Player Y: " + (board.playerO.getNickName()) + "\n" +
+                    "Players.Player X: " + (board.playerX.getNickName()) + "\n" +
+                    "Players.Player Y: " + (board.playerO.getNickName()) + "\n" +
                     winner + "\n" +
                     "The board is: \n" +
                     wwb.toString() +
