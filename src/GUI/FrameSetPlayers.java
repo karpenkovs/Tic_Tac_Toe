@@ -7,53 +7,71 @@ import java.awt.*;
 
 public class FrameSetPlayers extends JFrame {
 
-    private String[] PLAYERS = {"Player X", "Player O"};
-    private JRadioButton human = new JRadioButton("Human");
-    private JRadioButton pc = new JRadioButton("PC");
-
     public FrameSetPlayers() {
         super("Tic-Tac Toe");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(200, 300);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
-
-        for (int i = 0; i < PLAYERS.length; i++) {
-
-            JPanel panel = new JPanel();
-            BorderLayout borderLayout = new BorderLayout();
-            if (i == 0){
-                add(panel, BorderLayout.NORTH);
-            }else{
-                add(panel, BorderLayout.CENTER);
-            }
+        setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 
 
-            Box box = getBox();
-            box.setBorder(BorderFactory.createTitledBorder(PLAYERS[i]));
+        
 
-            panel.setLayout(borderLayout);
-            panel.add(box, BorderLayout.NORTH);
+        Box box1 = Box.createHorizontalBox();
+        ButtonGroup group1 = new ButtonGroup();
+        JRadioButton radioButtonHumanPlayerX = new JRadioButton("Human");
+        JRadioButton radioButtonPCPlayerX = new JRadioButton("PC");
 
-            JTextField textField1 = new JTextField();
+        group1.add(radioButtonHumanPlayerX);
+        group1.add(radioButtonPCPlayerX);
+        box1.add(radioButtonHumanPlayerX);
+        box1.add(radioButtonPCPlayerX);
+        box1.setBorder(BorderFactory.createTitledBorder("Player X"));
+        add(box1);
+        box1.setAlignmentX(0);
 
-            panel.add(textField1, BorderLayout.CENTER);
-        }
+        JTextField textField1 = new JTextField();
+        textField1.setPreferredSize(new Dimension(150, 25));
+        add(textField1);
 
-        add(new JButton("Back to main menu"),BorderLayout.SOUTH);
+
+
+
+        Box box2 = Box.createHorizontalBox();
+        ButtonGroup group2 = new ButtonGroup();
+        JRadioButton radioButtonHumanPlayerO = new JRadioButton("Human");
+        JRadioButton radioButtonPCPlayerO = new JRadioButton("PC");
+
+        group2.add(radioButtonHumanPlayerO);
+        group2.add(radioButtonPCPlayerO);
+        box2.add(radioButtonHumanPlayerO);
+        box2.add(radioButtonPCPlayerO);
+        box2.setBorder(BorderFactory.createTitledBorder("Player O"));
+        add(box2);
+        box2.setAlignmentX(0);
+
+
+        JTextField textField2 = new JTextField();
+        textField2.setPreferredSize(new Dimension(150, 25));
+        add(textField2);
+
+
+
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+
+        JButton buttonCancel = new JButton("Cancel");
+        JButton buttonOK = new JButton("OK");
+        panel.add(buttonCancel);
+        panel.add(buttonOK);
+
+        add(panel);
+
         setVisible(true);
 
     }
 
-    private Box getBox(){
-        Box box = Box.createHorizontalBox();
-           /* ButtonGroup group = new ButtonGroup();
-            group.add(human);
-            group.add(pc);*/
-        box.add(human);
-        box.add(pc);
-        return box;
-    }
 
 }

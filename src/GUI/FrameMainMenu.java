@@ -11,30 +11,26 @@ public class FrameMainMenu extends JFrame {
 
     final String[] NAMES = {"Start game", "Set players",
             "Get statistic of the player", "Show history", "Exit"};
-    //private List<JButton> buttons = new ArrayList<>();
     public static JButton btn;
 
     public FrameMainMenu() {
         super("Tic-Tac Toe");
 
-        Dimension dimension = new Dimension(250,80);
-
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(250,400);
+        setSize(350, 400);
         setLocationRelativeTo(null);
         setVisible(true);
 
         BoxLayout boxLayout = new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS);
         this.setLayout(boxLayout);
 
-        Font font = new Font("Arial", Font.PLAIN, 16);
+        Font font = new Font("Arial", Font.PLAIN, 24);
 
         for (int i = 0; i < NAMES.length; i++) {
             JButton button = new JButton(NAMES[i]);
-            button.setMaximumSize(dimension);
-            //button.setAlignmentX(CENTER_ALIGNMENT);
+            button.setMaximumSize(new Dimension(350, 80));
             button.setFont(font);
-            this.add(button);
+            add(button);
 
             button.addActionListener(new ActionListener() {
                 @Override
@@ -44,7 +40,6 @@ public class FrameMainMenu extends JFrame {
                     setVisible(false);
                 }
             });
-           // buttons.add(button);
         }
     }
 }
