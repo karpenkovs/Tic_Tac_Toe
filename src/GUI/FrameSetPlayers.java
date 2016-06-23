@@ -16,8 +16,6 @@ public class FrameSetPlayers extends JFrame {
         setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 
 
-        
-
         Box box1 = Box.createHorizontalBox();
         ButtonGroup group1 = new ButtonGroup();
         JRadioButton radioButtonHumanPlayerX = new JRadioButton("Human");
@@ -32,10 +30,8 @@ public class FrameSetPlayers extends JFrame {
         box1.setAlignmentX(0);
 
         JTextField textField1 = new JTextField();
-        textField1.setPreferredSize(new Dimension(150, 25));
+        textField1.setMaximumSize(new Dimension(180, 25));
         add(textField1);
-
-
 
 
         Box box2 = Box.createHorizontalBox();
@@ -53,10 +49,8 @@ public class FrameSetPlayers extends JFrame {
 
 
         JTextField textField2 = new JTextField();
-        textField2.setPreferredSize(new Dimension(150, 25));
+        textField2.setMaximumSize(new Dimension(180, 25));
         add(textField2);
-
-
 
 
         JPanel panel = new JPanel();
