@@ -55,6 +55,7 @@ public class FrameSetPlayers extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
+        panel.setAlignmentY(200);
 
         JButton buttonCancel = new JButton("Cancel");
         JButton buttonOK = new JButton("OK");
